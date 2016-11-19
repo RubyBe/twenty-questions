@@ -9,6 +9,8 @@ namespace TwentyQuestions
         public Question root;
         // a question that will be the current node
         public Question current;
+        // a temp question
+        public Question temp; // a temp question to hold values while building the new node
 
         public GameForm()
         {
@@ -21,8 +23,9 @@ namespace TwentyQuestions
             Game game = new Game();
             root = game.CreateRoot();
             current = root; // set the current node to point to the same node as the root
+            temp = current;
             QuestionLabel.Text = current.question;
-            /*current.yesNode.question = "Is your pet a bird?"; */     }
+        }
 
         private void YesButton_Click(object sender, EventArgs e)
         {
@@ -71,6 +74,11 @@ namespace TwentyQuestions
                 QuestionLabel.Text = current.noNode.question;
                 current = current.noNode;
             }
+        }
+
+        private void PrintInGame(object sender, EventArgs e)
+        {
+
         }
     }
 }

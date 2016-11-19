@@ -34,49 +34,51 @@
             this.NewClue = new System.Windows.Forms.TextBox();
             this.ButtonNewClue = new System.Windows.Forms.Button();
             this.ButtonPlayAgain = new System.Windows.Forms.Button();
+            this.PrintTree = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // NewObjectLabel
             // 
             this.NewObjectLabel.AutoSize = true;
-            this.NewObjectLabel.Location = new System.Drawing.Point(14, 22);
-            this.NewObjectLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.NewObjectLabel.Location = new System.Drawing.Point(26, 41);
+            this.NewObjectLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.NewObjectLabel.Name = "NewObjectLabel";
-            this.NewObjectLabel.Size = new System.Drawing.Size(130, 13);
+            this.NewObjectLabel.Size = new System.Drawing.Size(238, 25);
             this.NewObjectLabel.TabIndex = 0;
             this.NewObjectLabel.Text = "Please enter your pet type";
             // 
             // NewObject
             // 
-            this.NewObject.Location = new System.Drawing.Point(16, 45);
-            this.NewObject.Margin = new System.Windows.Forms.Padding(2);
+            this.NewObject.Location = new System.Drawing.Point(29, 83);
+            this.NewObject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NewObject.Name = "NewObject";
-            this.NewObject.Size = new System.Drawing.Size(416, 20);
+            this.NewObject.Size = new System.Drawing.Size(759, 29);
             this.NewObject.TabIndex = 1;
             // 
             // NewClueLabel
             // 
             this.NewClueLabel.AutoSize = true;
-            this.NewClueLabel.Location = new System.Drawing.Point(16, 84);
-            this.NewClueLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.NewClueLabel.Location = new System.Drawing.Point(29, 155);
+            this.NewClueLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.NewClueLabel.Name = "NewClueLabel";
-            this.NewClueLabel.Size = new System.Drawing.Size(280, 13);
+            this.NewClueLabel.Size = new System.Drawing.Size(511, 25);
             this.NewClueLabel.TabIndex = 2;
             this.NewClueLabel.Text = "Please enter a question that would have helped me guess";
             // 
             // NewClue
             // 
-            this.NewClue.Location = new System.Drawing.Point(16, 116);
-            this.NewClue.Margin = new System.Windows.Forms.Padding(2);
+            this.NewClue.Location = new System.Drawing.Point(29, 214);
+            this.NewClue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NewClue.Name = "NewClue";
-            this.NewClue.Size = new System.Drawing.Size(416, 20);
+            this.NewClue.Size = new System.Drawing.Size(759, 29);
             this.NewClue.TabIndex = 3;
             // 
             // ButtonNewClue
             // 
-            this.ButtonNewClue.Location = new System.Drawing.Point(81, 159);
+            this.ButtonNewClue.Location = new System.Drawing.Point(149, 294);
+            this.ButtonNewClue.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.ButtonNewClue.Name = "ButtonNewClue";
-            this.ButtonNewClue.Size = new System.Drawing.Size(75, 23);
+            this.ButtonNewClue.Size = new System.Drawing.Size(138, 42);
             this.ButtonNewClue.TabIndex = 4;
             this.ButtonNewClue.Text = "Submit";
             this.ButtonNewClue.UseVisualStyleBackColor = true;
@@ -84,26 +86,38 @@
             // 
             // ButtonPlayAgain
             // 
-            this.ButtonPlayAgain.Location = new System.Drawing.Point(284, 159);
+            this.ButtonPlayAgain.Location = new System.Drawing.Point(342, 294);
+            this.ButtonPlayAgain.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.ButtonPlayAgain.Name = "ButtonPlayAgain";
-            this.ButtonPlayAgain.Size = new System.Drawing.Size(75, 23);
+            this.ButtonPlayAgain.Size = new System.Drawing.Size(138, 42);
             this.ButtonPlayAgain.TabIndex = 5;
             this.ButtonPlayAgain.Text = "Play Again";
             this.ButtonPlayAgain.UseVisualStyleBackColor = true;
             this.ButtonPlayAgain.Click += new System.EventHandler(this.ButtonPlayAgain_Click);
             // 
+            // PrintTree
+            // 
+            this.PrintTree.Location = new System.Drawing.Point(577, 294);
+            this.PrintTree.Name = "PrintTree";
+            this.PrintTree.Size = new System.Drawing.Size(114, 41);
+            this.PrintTree.TabIndex = 6;
+            this.PrintTree.Text = "View Tree";
+            this.PrintTree.UseVisualStyleBackColor = true;
+            this.PrintTree.Click += new System.EventHandler(this.PrintTree_Click);
+            // 
             // LearnForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 208);
+            this.ClientSize = new System.Drawing.Size(867, 384);
+            this.Controls.Add(this.PrintTree);
             this.Controls.Add(this.ButtonPlayAgain);
             this.Controls.Add(this.ButtonNewClue);
             this.Controls.Add(this.NewClue);
             this.Controls.Add(this.NewClueLabel);
             this.Controls.Add(this.NewObject);
             this.Controls.Add(this.NewObjectLabel);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "LearnForm";
             this.Text = "LearnForm";
             this.Load += new System.EventHandler(this.LearnForm_Load);
@@ -120,5 +134,6 @@
         private System.Windows.Forms.TextBox NewClue;
         private System.Windows.Forms.Button ButtonNewClue;
         private System.Windows.Forms.Button ButtonPlayAgain;
+        private System.Windows.Forms.Button PrintTree;
     }
 }
