@@ -95,11 +95,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label QuestionLabel;
         private System.Windows.Forms.Button YesButton;
         private System.Windows.Forms.Button NoButton;
         private System.Windows.Forms.Label LabelInstruction;
+        public System.Windows.Forms.Label QuestionLabel;
     }
 }
 

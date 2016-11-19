@@ -14,6 +14,12 @@ namespace TwentyQuestions
         public Question yesNode;
         public Question noNode;
 
+        // constructor with no parameters required
+        public Question()
+        {
+
+        }
+
         // constructor for a question which accepts a single string
         public Question(string nodeQuestion)
         {
