@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace TwentyQuestions
@@ -13,6 +14,8 @@ namespace TwentyQuestions
         public Question temp; // a temp question to hold values while building the new node
         // a flag to indicate branch type; 1 = yes, 0 = no
         public int nodeFlag;
+        // List to write values
+        public Dictionary<string, Question> treeList = new Dictionary<string, Question> { };
 
         public GameForm()
         {
@@ -25,8 +28,11 @@ namespace TwentyQuestions
             Game game = new Game();
             root = game.CreateRoot();
             current = root; // set the current node to point to the same node as the root
-            temp = current;
+            temp = current; // temporary question to hold contents of current for creating new node
             QuestionLabel.Text = current.question;
+
+            treeList.Add("Node1: ", root);
+
         }
 
         private void YesButton_Click(object sender, EventArgs e)
@@ -82,7 +88,9 @@ namespace TwentyQuestions
 
         private void PrintInGame(object sender, EventArgs e)
         {
-
+            // if wants to print, launch the tree form
+            Tree tree = new Tree();
+            tree.ShowDialog();
         }
     }
 }

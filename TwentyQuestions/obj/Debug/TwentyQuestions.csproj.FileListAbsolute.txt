@@ -18,3 +18,4 @@ C:\repos\twenty-questions\TwentyQuestions\obj\Debug\TwentyQuestions.GameForm.res
 C:\repos\twenty-questions\TwentyQuestions\obj\Debug\TwentyQuestions.LearnForm.resources
 C:\repos\twenty-questions\TwentyQuestions\obj\Debug\TwentyQuestions.Properties.Resources.resources
 C:\repos\twenty-questions\TwentyQuestions\obj\Debug\TwentyQuestions.csproj.GenerateResource.Cache
+C:\repos\twenty-questions\TwentyQuestions\obj\Debug\TwentyQuestions.Tree.resources
