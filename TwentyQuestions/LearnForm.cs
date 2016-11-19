@@ -32,9 +32,18 @@ namespace TwentyQuestions
         private void ButtonNewClue_Click(object sender, EventArgs e)
         {
             Question newQuestion = new Question(NewClue.Text);
-            newQuestion.yesNode = new Question("Is your pet a " + NewObject.Text + "?");
-            newQuestion.noNode = _gameForm.temp.noNode;
-            _gameForm.temp.noNode = newQuestion;
+            if (_gameForm.nodeFlag == 1)
+            {
+                newQuestion.noNode = _gameForm.temp.yesNode;
+                newQuestion.yesNode =  new Question("Is your pet a " + NewObject.Text + "?");
+            }
+            else
+            {
+                newQuestion.yesNode = new Question("Is your pet a " + NewObject.Text + "?");
+                newQuestion.noNode = _gameForm.temp.noNode;
+            }
+            
+            _gameForm.temp.yesNode = newQuestion;
             _gameForm.current = _gameForm.temp;
             ButtonPlayAgain.Show();
         }

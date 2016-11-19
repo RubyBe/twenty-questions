@@ -11,6 +11,8 @@ namespace TwentyQuestions
         public Question current;
         // a temp question
         public Question temp; // a temp question to hold values while building the new node
+        // a flag to indicate branch type; 1 = yes, 0 = no
+        public int nodeFlag;
 
         public GameForm()
         {
@@ -48,6 +50,7 @@ namespace TwentyQuestions
                 // is not a leaf - ask next question
                 QuestionLabel.Text = current.yesNode.question;
                 current = current.yesNode;
+                nodeFlag = 1;
             }        
         }
 
@@ -73,6 +76,7 @@ namespace TwentyQuestions
                 // is not a leaf - ask next question
                 QuestionLabel.Text = current.noNode.question;
                 current = current.noNode;
+                nodeFlag = 0;
             }
         }
 
