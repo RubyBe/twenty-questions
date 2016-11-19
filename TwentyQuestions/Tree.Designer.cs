@@ -28,54 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.LabelTree = new System.Windows.Forms.Label();
+            this.TreeListView = new System.Windows.Forms.ListView();
+            this.NodeQuestion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
-            // 
-            // treeView1
-            // 
-            this.treeView1.Location = new System.Drawing.Point(556, 587);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(121, 97);
-            this.treeView1.TabIndex = 0;
-            // 
-            // listView1
-            // 
-            this.listView1.Location = new System.Drawing.Point(333, 276);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(121, 97);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // LabelTree
             // 
             this.LabelTree.AutoSize = true;
-            this.LabelTree.Location = new System.Drawing.Point(288, 110);
+            this.LabelTree.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.85714F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelTree.Location = new System.Drawing.Point(379, 34);
             this.LabelTree.Name = "LabelTree";
-            this.LabelTree.Size = new System.Drawing.Size(133, 25);
+            this.LabelTree.Size = new System.Drawing.Size(254, 44);
             this.LabelTree.TabIndex = 2;
             this.LabelTree.Text = "Your Pet Tree";
+            // 
+            // TreeListView
+            // 
+            this.TreeListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.NodeQuestion});
+            this.TreeListView.Location = new System.Drawing.Point(-2, 101);
+            this.TreeListView.Name = "TreeListView";
+            this.TreeListView.Size = new System.Drawing.Size(1069, 717);
+            this.TreeListView.TabIndex = 3;
+            this.TreeListView.UseCompatibleStateImageBehavior = false;
+            // 
+            // NodeQuestion
+            // 
+            this.NodeQuestion.Width = 200;
             // 
             // Tree
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1065, 822);
+            this.Controls.Add(this.TreeListView);
             this.Controls.Add(this.LabelTree);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.treeView1);
             this.Name = "Tree";
             this.Text = "Tree";
+            this.Load += new System.EventHandler(this.Tree_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Label LabelTree;
+        private System.Windows.Forms.ListView TreeListView;
+        private System.Windows.Forms.ColumnHeader NodeQuestion;
     }
 }

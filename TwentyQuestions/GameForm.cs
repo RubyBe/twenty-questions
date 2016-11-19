@@ -16,6 +16,7 @@ namespace TwentyQuestions
         public int nodeFlag;
         // List to write values
         public Dictionary<string, Question> treeList = new Dictionary<string, Question> { };
+        public int listIndex; // index to track # of nodes - first = root
 
         public GameForm()
         {
@@ -32,7 +33,6 @@ namespace TwentyQuestions
             QuestionLabel.Text = current.question;
 
             treeList.Add("Node1: ", root);
-
         }
 
         private void YesButton_Click(object sender, EventArgs e)
@@ -75,7 +75,6 @@ namespace TwentyQuestions
                 // if wants to teach, launch the learn form
                 LearnForm learn = new LearnForm(this);
                 learn.ShowDialog();
-                //QuestionLabel.Text = current.question;
             }
             else
             {
@@ -89,7 +88,7 @@ namespace TwentyQuestions
         private void PrintInGame(object sender, EventArgs e)
         {
             // if wants to print, launch the tree form
-            Tree tree = new Tree();
+            Tree tree = new Tree(this);
             tree.ShowDialog();
         }
     }

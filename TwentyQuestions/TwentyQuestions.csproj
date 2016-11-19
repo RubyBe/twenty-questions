@@ -52,7 +52,6 @@
     <Compile Include="GameForm.Designer.cs">
       <DependentUpon>GameForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GenerateQuestion.cs" />
     <Compile Include="LearnForm.cs">
       <SubType>Form</SubType>
     </Compile>

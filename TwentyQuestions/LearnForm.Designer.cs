@@ -82,7 +82,7 @@
             this.ButtonNewClue.TabIndex = 4;
             this.ButtonNewClue.Text = "Submit";
             this.ButtonNewClue.UseVisualStyleBackColor = true;
-            this.ButtonNewClue.Click += new System.EventHandler(this.ButtonNewClue_Click);
+            this.ButtonNewClue.Click += new System.EventHandler(this.ButtonNewQuestion_Click);
             // 
             // ButtonPlayAgain
             // 

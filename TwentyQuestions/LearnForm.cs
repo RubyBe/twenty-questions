@@ -12,7 +12,6 @@ namespace TwentyQuestions
 {
     public partial class LearnForm : Form
     {
-        int index = 1; // index to track # of nodes - first = root
         public GameForm _gameForm    { get; set; }
 
         // pass in the instance of the game form so that you can access its variables
@@ -21,6 +20,11 @@ namespace TwentyQuestions
             InitializeComponent();
             ButtonPlayAgain.Hide();
             _gameForm = gameForm;
+            if(_gameForm.listIndex == 0)
+            {
+                _gameForm.listIndex = 1;
+            }
+
         }
 
         private void LearnForm_Load(object sender, EventArgs e)
@@ -29,7 +33,7 @@ namespace TwentyQuestions
             string userResult = NewObject.Text;
         }
 
-        private void ButtonNewClue_Click(object sender, EventArgs e)
+        private void ButtonNewQuestion_Click(object sender, EventArgs e)
         {
             Question newQuestion = new Question(NewClue.Text);
             if (_gameForm.nodeFlag == 1)
@@ -46,8 +50,11 @@ namespace TwentyQuestions
             _gameForm.temp.yesNode = newQuestion;
             _gameForm.current = _gameForm.temp;
             // Add node to list for printing after increasing count
-            index++;
-            _gameForm.treeList.Add($"Node{index}", newQuestion);
+            _gameForm.listIndex++;
+            if(_gameForm.listIndex != 1)
+            {
+                _gameForm.treeList.Add($"Node{_gameForm.listIndex}: ", newQuestion);
+            }           
             ButtonPlayAgain.Show();
         }
 
@@ -61,7 +68,7 @@ namespace TwentyQuestions
         private void PrintTree_Click(object sender, EventArgs e)
         {
             // if wants to print, launch the tree form
-            Tree tree = new Tree();
+            Tree tree = new Tree(_gameForm);
             tree.ShowDialog();
         }
     }
