@@ -42,7 +42,7 @@ namespace TwentyQuestions
             // is not a leaf - ask next question
             Question question;
             question = current.yesNode;
-            temp = current;
+            /*temp = current;*/
             nodeFlag = "Yes";
             return question;
         }
@@ -52,7 +52,7 @@ namespace TwentyQuestions
             // is not a leaf - ask next question
             Question question;
             question = current.noNode;
-            temp = current;
+            //temp = current;
             nodeFlag = "No";
             return question;
         }

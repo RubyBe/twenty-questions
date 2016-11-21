@@ -37,13 +37,13 @@ namespace TwentyQuestions
             {
                 newQuestion.noNode = _game.temp.yesNode;
                 newQuestion.yesNode =  new Question("Is your pet a " + NewObject.Text + "?");
-                _game.temp.yesNode.yesNode = newQuestion;
+                _game.current.yesNode = newQuestion;
             }
             else if (_game.nodeFlag == "No")
             {
                 newQuestion.yesNode = new Question("Is your pet a " + NewObject.Text + "?");
                 newQuestion.noNode = _game.temp.noNode;
-                _game.temp.noNode.noNode = newQuestion;
+                _game.temp.noNode = newQuestion;
             }
             
             _game.current = _game.temp;
