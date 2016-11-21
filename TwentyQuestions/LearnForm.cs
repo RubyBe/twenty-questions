@@ -1,30 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TwentyQuestions
 {
     public partial class LearnForm : Form
     {
+        // learning a new answer/question is adding a new node to the tree
         public GameForm _gameForm    { get; set; }
+        public Game _game { get; set;  }
 
         // pass in the instance of the game form so that you can access its variables
-        public LearnForm(GameForm gameForm)
+        public LearnForm(Game game, GameForm gameForm)
         {
             InitializeComponent();
+            // hide the play again button until a new question is submitted
             ButtonPlayAgain.Hide();
             _gameForm = gameForm;
-            if(_gameForm.listIndex == 0)
+            _game = game;
+            // if this is the root node, we want to format the print list differently
+            if(_game.listIndex == 0)
             {
-                _gameForm.listIndex = 1;
+                _game.listIndex = 1;
             }
-
         }
 
         private void LearnForm_Load(object sender, EventArgs e)
@@ -36,39 +33,45 @@ namespace TwentyQuestions
         private void ButtonNewQuestion_Click(object sender, EventArgs e)
         {
             Question newQuestion = new Question(NewClue.Text);
-            if (_gameForm.nodeFlag == 1)
+            if (_game.nodeFlag == "Yes")
             {
-                newQuestion.noNode = _gameForm.temp.yesNode;
+                newQuestion.noNode = _game.temp.yesNode;
                 newQuestion.yesNode =  new Question("Is your pet a " + NewObject.Text + "?");
+                _game.temp.yesNode.yesNode = newQuestion;
             }
-            else
+            else if (_game.nodeFlag == "No")
             {
                 newQuestion.yesNode = new Question("Is your pet a " + NewObject.Text + "?");
-                newQuestion.noNode = _gameForm.temp.noNode;
+                newQuestion.noNode = _game.temp.noNode;
+                _game.temp.noNode.noNode = newQuestion;
             }
             
-            _gameForm.temp.yesNode = newQuestion;
-            _gameForm.current = _gameForm.temp;
+            _game.current = _game.temp;
             // Add node to list for printing after increasing count
-            _gameForm.listIndex++;
-            if(_gameForm.listIndex != 1)
+            _game.listIndex++;
+            if(_game.listIndex != 1)
             {
-                _gameForm.treeList.Add($"Node{_gameForm.listIndex}: ", newQuestion);
-            }           
+                _game.treeList.Add($"Node{_game.listIndex}: ", newQuestion);
+            }
+            // Check the depth of the tree - if it is greater than 2, rotate the branch to flattern the tree
+            // TODO
+            // make the play again button visible
             ButtonPlayAgain.Show();
         }
 
         private void ButtonPlayAgain_Click(object sender, EventArgs e)
         {
-            _gameForm.current = _gameForm.root;
-            _gameForm.QuestionLabel.Text = _gameForm.current.question;
+            // TODO
+            // fine tune the traversal here
+            _game.current = _game.root;
+            _gameForm.QuestionLabel.Text = _game.current.question;
             this.Close();
         }
 
         private void PrintTree_Click(object sender, EventArgs e)
         {
             // if wants to print, launch the tree form
-            Tree tree = new Tree(_gameForm);
+            Tree tree = new Tree(_game);
             tree.ShowDialog();
         }
     }

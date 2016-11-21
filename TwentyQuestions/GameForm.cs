@@ -6,18 +6,7 @@ namespace TwentyQuestions
 {
     public partial class GameForm : Form
     {
-        // a question that will be the root node
-        public Question root;
-        // a question that will be the current node
-        public Question current;
-        // a temp question
-        public Question temp; // a temp question to hold values while building the new node
-        // a flag to indicate branch type; 1 = yes, 0 = no
-        public int nodeFlag;
-        // List to write values
-        public Dictionary<string, Question> treeList = new Dictionary<string, Question> { };
-        public int listIndex; // index to track # of nodes - first = root
-
+        public Game _game { get; set; }
         public GameForm()
         {
             InitializeComponent();
@@ -26,46 +15,46 @@ namespace TwentyQuestions
         // I have a pet - what is my pet?
         private void GameForm_Load(object sender, EventArgs e)
         {
-            Game game = new Game();
-            root = game.CreateRoot();
-            current = root; // set the current node to point to the same node as the root
-            temp = current; // temporary question to hold contents of current for creating new node
-            QuestionLabel.Text = current.question;
-
-            treeList.Add("Node1: ", root);
+            _game = new Game();
+            _game.root = _game.CreateRoot();
+            _game.current = _game.root; // set the current node to point to the same node as the root
+            _game.temp = _game.current; // temporary question to hold contents of current for creating new node
+            QuestionLabel.Text = _game.current.question;
+            // add note to list for tracking
+            _game.treeList.Add("Node1: ", _game.root);
         }
 
+        // checks to see whether current node is a leaf, and if so prints out success
+        // if not, passes control back to the game
         private void YesButton_Click(object sender, EventArgs e)
-        {
-            // there may not be a next question
-            // call IsLeaf
-            if (current.IsLeaf())
+        {          
+            if (_game.current.IsLeaf())
             {
                 // is a leaf - game over, you won, play again?
-                // if (MessageBox.Show($"Then it's {result}! Play again?", "Twenty Questions", MessageBoxButtons.YesNo) == DialogResult.No)
-                // TODO - make it display the type of pet
-                if (MessageBox.Show($"Pet has been guessed! Play again?", "Twenty Questions", MessageBoxButtons.YesNo) == DialogResult.No)
+                if (MessageBox.Show($"I've guessed correctly! Play again?", "Twenty Questions", MessageBoxButtons.YesNo) == DialogResult.No)
+                    // TODO - make it display the type of pet
+                    if (MessageBox.Show($"Pet has been guessed! Play again?", "Twenty Questions", MessageBoxButtons.YesNo) == DialogResult.No)
                 {
                     this.Close();
                 }
-                current = root;
-                QuestionLabel.Text = current.question;
+                _game.current = _game.root;
+                QuestionLabel.Text = _game.current.question;
             }
             else
             {
-                // is not a leaf - ask next question
-                QuestionLabel.Text = current.yesNode.question;
-                current = current.yesNode;
-                nodeFlag = 1;
-            }        
+                _game.current = _game.HandleYes(_game.current);
+                QuestionLabel.Text = _game.current.question;
+            }
         }
 
+        // the No functionality checks to see whether current node is a leaf, and if so asks to learn
+        //  if so, passes control to the Learn functionality
+        //  if not, ends the game
+        // if not a leaf, passes control to game to ask next question
         private void NoButton_Click(object sender, EventArgs e)
         {
-            // there may not be a next question
-            // call IsLeaf
-            // is a leaf - game over, you lost, ask to learn or quit
-            if (current.IsLeaf())
+
+            if (_game.current.IsLeaf())
             {
                 //  if doesn't want to teach -
                 if (MessageBox.Show("Ooops, wrong! Teach me?", "Twenty Questions", MessageBoxButtons.YesNo) == DialogResult.No)
@@ -73,22 +62,20 @@ namespace TwentyQuestions
                     this.Close();
                 }
                 // if wants to teach, launch the learn form
-                LearnForm learn = new LearnForm(this);
+                LearnForm learn = new LearnForm(_game, this);
                 learn.ShowDialog();
             }
             else
             {
-                // is not a leaf - ask next question
-                QuestionLabel.Text = current.noNode.question;
-                current = current.noNode;
-                nodeFlag = 0;
+                _game.current = _game.HandleNo(_game.current);
+                QuestionLabel.Text = _game.current.question;
             }
         }
 
         private void PrintInGame(object sender, EventArgs e)
         {
             // if wants to print, launch the tree form
-            Tree tree = new Tree(this);
+            Tree tree = new Tree(_game);
             tree.ShowDialog();
         }
     }

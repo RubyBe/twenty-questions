@@ -50,7 +50,7 @@
             // NewObject
             // 
             this.NewObject.Location = new System.Drawing.Point(29, 83);
-            this.NewObject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NewObject.Margin = new System.Windows.Forms.Padding(4);
             this.NewObject.Name = "NewObject";
             this.NewObject.Size = new System.Drawing.Size(759, 29);
             this.NewObject.TabIndex = 1;
@@ -68,7 +68,7 @@
             // NewClue
             // 
             this.NewClue.Location = new System.Drawing.Point(29, 214);
-            this.NewClue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NewClue.Margin = new System.Windows.Forms.Padding(4);
             this.NewClue.Name = "NewClue";
             this.NewClue.Size = new System.Drawing.Size(759, 29);
             this.NewClue.TabIndex = 3;
@@ -76,7 +76,7 @@
             // ButtonNewClue
             // 
             this.ButtonNewClue.Location = new System.Drawing.Point(149, 294);
-            this.ButtonNewClue.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.ButtonNewClue.Margin = new System.Windows.Forms.Padding(6);
             this.ButtonNewClue.Name = "ButtonNewClue";
             this.ButtonNewClue.Size = new System.Drawing.Size(138, 42);
             this.ButtonNewClue.TabIndex = 4;
@@ -87,7 +87,7 @@
             // ButtonPlayAgain
             // 
             this.ButtonPlayAgain.Location = new System.Drawing.Point(342, 294);
-            this.ButtonPlayAgain.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.ButtonPlayAgain.Margin = new System.Windows.Forms.Padding(6);
             this.ButtonPlayAgain.Name = "ButtonPlayAgain";
             this.ButtonPlayAgain.Size = new System.Drawing.Size(138, 42);
             this.ButtonPlayAgain.TabIndex = 5;
@@ -117,7 +117,7 @@
             this.Controls.Add(this.NewClueLabel);
             this.Controls.Add(this.NewObject);
             this.Controls.Add(this.NewObjectLabel);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LearnForm";
             this.Text = "LearnForm";
             this.Load += new System.EventHandler(this.LearnForm_Load);
@@ -129,11 +129,11 @@
         #endregion
 
         private System.Windows.Forms.Label NewObjectLabel;
-        private System.Windows.Forms.TextBox NewObject;
         private System.Windows.Forms.Label NewClueLabel;
-        private System.Windows.Forms.TextBox NewClue;
         private System.Windows.Forms.Button ButtonNewClue;
         private System.Windows.Forms.Button ButtonPlayAgain;
         private System.Windows.Forms.Button PrintTree;
+        public System.Windows.Forms.TextBox NewObject;
+        public System.Windows.Forms.TextBox NewClue;
     }
 }

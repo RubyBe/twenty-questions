@@ -5,18 +5,21 @@ namespace TwentyQuestions
 {
     public partial class Tree : Form
     {
-        public GameForm _gameForm { get; set; }
-        public Tree(GameForm gameForm)
+        // a class to build and display a tree list for printing to screen or a file
+        public Game _game { get; set; }
+        public Tree(Game game)
         {
             InitializeComponent();
-            _gameForm = gameForm;
+            _game = game;
         }
 
         private void Tree_Load(object sender, EventArgs e)
         {
             TreeListView.Columns.Add("Key", 60);
             TreeListView.Columns.Add("Value", 200);
-            foreach (var question in _gameForm.treeList)
+            foreach (var question in  
+                
+                _game.treeList)
             {
                 TreeListView.Items.Add(question.Key);
                 TreeListView.Items.Add(question.Value.question);
