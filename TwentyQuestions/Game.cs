@@ -24,7 +24,8 @@ namespace TwentyQuestions
         public Dictionary<string, Question> treeList = new Dictionary<string, Question> { };
         public int listIndex; // index to track # of nodes - first = root
 
-
+        //  load a tree from a file; if tree doesn't exist, then create the root
+        Question savedRoot;
         public Question CreateRoot()
         {
             // get the game started by populating the first (root) node
@@ -55,6 +56,13 @@ namespace TwentyQuestions
             //temp = current;
             nodeFlag = "No";
             return question;
+        }
+
+        public Question LoadTree()
+        {
+            Question root = new Question();
+
+            return root;
         }
     }
 }

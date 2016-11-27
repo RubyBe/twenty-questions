@@ -19,3 +19,14 @@ C:\repos\twenty-questions\TwentyQuestions\obj\Debug\TwentyQuestions.LearnForm.re
 C:\repos\twenty-questions\TwentyQuestions\obj\Debug\TwentyQuestions.Properties.Resources.resources
 C:\repos\twenty-questions\TwentyQuestions\obj\Debug\TwentyQuestions.csproj.GenerateResource.Cache
 C:\repos\twenty-questions\TwentyQuestions\obj\Debug\TwentyQuestions.Tree.resources
+C:\repos\twenty-questions_old\TwentyQuestions\bin\Debug\TwentyQuestions.exe.config
+C:\repos\twenty-questions_old\TwentyQuestions\obj\Debug\TwentyQuestions.exe
+C:\repos\twenty-questions_old\TwentyQuestions\obj\Debug\TwentyQuestions.pdb
+C:\repos\twenty-questions_old\TwentyQuestions\bin\Debug\TwentyQuestions.exe
+C:\repos\twenty-questions_old\TwentyQuestions\bin\Debug\TwentyQuestions.pdb
+C:\repos\twenty-questions_old\TwentyQuestions\obj\Debug\TwentyQuestions.csprojResolveAssemblyReference.cache
+C:\repos\twenty-questions_old\TwentyQuestions\obj\Debug\TwentyQuestions.GameForm.resources
+C:\repos\twenty-questions_old\TwentyQuestions\obj\Debug\TwentyQuestions.LearnForm.resources
+C:\repos\twenty-questions_old\TwentyQuestions\obj\Debug\TwentyQuestions.Properties.Resources.resources
+C:\repos\twenty-questions_old\TwentyQuestions\obj\Debug\TwentyQuestions.Tree.resources
+C:\repos\twenty-questions_old\TwentyQuestions\obj\Debug\TwentyQuestions.csproj.GenerateResource.Cache

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace TwentyQuestions
@@ -32,6 +33,7 @@ namespace TwentyQuestions
 
         private void ButtonNewQuestion_Click(object sender, EventArgs e)
         {
+            // build a new question node
             Question newQuestion = new Question(NewClue.Text);
             if (_game.nodeFlag == "Yes")
             {
@@ -47,14 +49,23 @@ namespace TwentyQuestions
             }
             
             _game.current = _game.temp;
-            // Add node to list for printing after increasing count
+            // add node to list for printing after increasing count
             _game.listIndex++;
             if(_game.listIndex != 1)
             {
                 _game.treeList.Add($"Node{_game.listIndex}: ", newQuestion);
             }
-            // Check the depth of the tree - if it is greater than 2, rotate the branch to flattern the tree
+            // check the tree structure - if it is unbalanced, then rebalance
             // TODO
+
+            // save the tree to a file
+            StreamWriter stream = File.CreateText(@"c:\repos\twenty-questions\questions.txt");
+            stream.Close();
+            using (stream = File.AppendText(@"c:\repos\twenty-questions\questions.txt"))
+            {
+                stream.Write("Hey Hey Hello");
+            };
+
             // make the play again button visible
             ButtonPlayAgain.Show();
         }
