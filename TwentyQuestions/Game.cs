@@ -24,15 +24,24 @@ namespace TwentyQuestions
 
         public Question CreateRoot()
         {
-            // first try to load an existing tree by reading the questions.txt file
             Question root = new Question();
-            root = LoadTree();
-            // get the game started by populating the first (root) node
-            // with the base differentiating question and setting the child
-            // nodes with two questions reflecting potential answers
-            //root = new Question("Can your pet fly?");
-            //root.yesNode = new Question("Is your pet a bird?");
-            //root.noNode = new Question("Is your pet a snake?");
+            // first try to load an existing tree by reading the questions.txt file
+            // check to see whether or not tree contains content
+            int counter = CountTree();
+            if (counter < 1)
+            {
+                // file is empty; get the game started by populating the first (root) node
+                // with the base differentiating question and setting the child
+                // nodes with two questions reflecting potential answers
+                root = new Question("Can your pet fly?");
+                root.yesNode = new Question("Is your pet a bird?");
+                root.noNode = new Question("Is your pet a snake?");
+            }
+            else
+            {
+                // file is not empty; load the tree
+                root = LoadTree();
+            }
             return root;
         }
 
@@ -49,27 +58,40 @@ namespace TwentyQuestions
             {
                 count++;
             }
-            int nodes = count / 3;
-            return nodes;
+            if (count == 0)
+            {
+                return count;
+            }
+            else
+            {
+                int nodes = count / 3;
+                return nodes;
+            }
         }
 
         public Question LoadTree()
         {
+            // lists to hold nodes
             Question savedRoot = new Question();
-            Question yesNode = new Question();
-            Question noNode = new Question();
+            List<string> roots = new List<string>();
+            List<string> yeses = new List<string>();
+            List<string> nos = new List<string>();
+
             int counter = CountTree();
             StreamReader reader = File.OpenText(filename);
-            for(int i = 0; i < counter; i++)
+            for (int i = 0; i < counter; i++)
             {
                 line = reader.ReadLine();
-                savedRoot.question = line;
+                roots.Add(line);
                 line = reader.ReadLine();
-                yesNode.question = line;
+                yeses.Add(line);
                 line = reader.ReadLine();
-                noNode.question = line;
+                nos.Add(line);
             }
-            return root;
+            // build the tree
+            //Question yesNode = new Question();
+            //Question noNode = new Question();
+            return savedRoot;
         }
 
         public Question HandleYes(Question current)
@@ -78,7 +100,6 @@ namespace TwentyQuestions
             // is not a leaf - ask next question
             Question question;
             question = current.yesNode;
-            /*temp = current;*/
             nodeFlag = "Yes";
             return question;
         }
@@ -88,7 +109,6 @@ namespace TwentyQuestions
             // is not a leaf - ask next question
             Question question;
             question = current.noNode;
-            //temp = current;
             nodeFlag = "No";
             return question;
         }
