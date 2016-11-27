@@ -46,8 +46,7 @@ namespace TwentyQuestions
                 newQuestion.yesNode = new Question("Is your pet a " + NewObject.Text + "?");
                 newQuestion.noNode = _game.temp.noNode;
                 _game.temp.noNode = newQuestion;
-            }
-            
+            }          
             _game.current = _game.temp;
             // add node to list for printing after increasing count
             _game.listIndex++;
@@ -58,13 +57,22 @@ namespace TwentyQuestions
             // check the tree structure - if it is unbalanced, then rebalance
             // TODO
 
-            // save the tree to a file
-            StreamWriter stream = File.CreateText(@"c:\repos\twenty-questions\questions.txt");
-            stream.Close();
-            using (stream = File.AppendText(@"c:\repos\twenty-questions\questions.txt"))
+            // save the tree to a file 
+            try
             {
-                stream.Write("Hey Hey Hello");
-            };
+                using (StreamWriter stream = File.AppendText(@"c:\repos\twenty-questions\questions.txt"))
+                {
+                    stream.WriteLine(newQuestion.question);
+                    stream.WriteLine("\t" + newQuestion.yesNode.question);
+                    stream.WriteLine("\t" + newQuestion.noNode.question);
+                    stream.Close();
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("File not found");
+            }
+
 
             // make the play again button visible
             ButtonPlayAgain.Show();
