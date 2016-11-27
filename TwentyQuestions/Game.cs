@@ -38,24 +38,36 @@ namespace TwentyQuestions
 
         // Attempt to read a tree from a file
         string filename = @"C:\repos\twenty-questions\questions.txt";
-        char[] tree;
-        StringBuilder builder = new StringBuilder();
+        string line;
+        int count;
+
+        // return the number of nodes stored in the tree file
+        public int CountTree()
+        {
+            StreamReader reader = File.OpenText(filename);
+            while((line = reader.ReadLine()) != null)
+            {
+                count++;
+            }
+            int nodes = count / 3;
+            return nodes;
+        }
 
         public Question LoadTree()
         {
-            Question root = new Question();
-            using (StreamReader reader = File.OpenText(filename))
+            Question savedRoot = new Question();
+            Question yesNode = new Question();
+            Question noNode = new Question();
+            int counter = CountTree();
+            StreamReader reader = File.OpenText(filename);
+            for(int i = 0; i < counter; i++)
             {
-                tree = new char[reader.BaseStream.Length];
-                reader.Read(tree, 0, (int)reader.BaseStream.Length);
-            }
-            foreach (char c in tree)
-            {
-                if (char.IsLetterOrDigit(c))
-                {
-                    builder.Append(c);
-                    root.question = builder.ToString();
-                }
+                line = reader.ReadLine();
+                savedRoot.question = line;
+                line = reader.ReadLine();
+                yesNode.question = line;
+                line = reader.ReadLine();
+                noNode.question = line;
             }
             return root;
         }
