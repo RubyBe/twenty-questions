@@ -36,6 +36,14 @@ namespace TwentyQuestions
                 root = new Question("Can your pet fly?");
                 root.yesNode = new Question("Is your pet a bird?");
                 root.noNode = new Question("Is your pet a snake?");
+                // write the first node to the file
+                using (StreamWriter stream = File.AppendText(@"c:\repos\twenty-questions\questions.txt"))
+                {
+                    stream.WriteLine(root.question);
+                    stream.WriteLine("\t" + root.yesNode.question);
+                    stream.WriteLine("\t" + root.noNode.question);
+                    stream.Close();
+                }
             }
             else
             {
@@ -60,10 +68,12 @@ namespace TwentyQuestions
             }
             if (count == 0)
             {
+                reader.Close();
                 return count;
             }
             else
             {
+                reader.Close();
                 int nodes = count / 3;
                 return nodes;
             }
@@ -88,6 +98,8 @@ namespace TwentyQuestions
                 line = reader.ReadLine();
                 nos.Add(line);
             }
+            //close the reader
+            reader.Close();
             // build the tree
             //Question yesNode = new Question();
             //Question noNode = new Question();

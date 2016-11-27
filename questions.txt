@@ -1,1 +1,9 @@
-
+Can your pet fly?
+	Is your pet a bird?
+	Is your pet a snake?
+		Does your pet bark?
+			Is your pet a dog?
+			Is your pet a snake?
+		Does your pet have arms?
+			Is your pet a alligator?
+			Does your pet bark?

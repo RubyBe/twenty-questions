@@ -62,18 +62,21 @@ namespace TwentyQuestions
             {
                 using (StreamWriter stream = File.AppendText(@"c:\repos\twenty-questions\questions.txt"))
                 {
-                    stream.WriteLine(newQuestion.question);
-                    stream.WriteLine("\t" + newQuestion.yesNode.question);
-                    stream.WriteLine("\t" + newQuestion.noNode.question);
+                    string prefixParent = "\t\t";
+                    string prefixChild = "\t\t\t";
+                    stream.WriteLine(prefixParent + newQuestion.question);
+                    stream.WriteLine(prefixChild + newQuestion.yesNode.question);
+                    stream.WriteLine(prefixChild + newQuestion.noNode.question);
                     stream.Close();
+                    prefixParent = prefixParent + "\t";
+                    prefixChild = prefixChild + "\t";
                 }
             }
             catch (FileNotFoundException)
             {
                 MessageBox.Show("File not found");
             }
-
-
+           
             // make the play again button visible
             ButtonPlayAgain.Show();
         }
