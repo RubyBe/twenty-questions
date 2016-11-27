@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace TwentyQuestions
 {
@@ -17,23 +15,48 @@ namespace TwentyQuestions
         // a counter that will be used to track the depth of the tree
         public int depth;
         // a temp question to hold values while building the new node
-        public Question temp; 
+        public Question temp;
         // a flag to indicate branch type; 1 = yes, 0 = no
         public string nodeFlag;
         // List to hold questions for output purposes
         public Dictionary<string, Question> treeList = new Dictionary<string, Question> { };
         public int listIndex; // index to track # of nodes - first = root
 
-        //  load a tree from a file; if tree doesn't exist, then create the root
-        Question savedRoot;
         public Question CreateRoot()
         {
+            // first try to load an existing tree by reading the questions.txt file
+            Question root = new Question();
+            root = LoadTree();
             // get the game started by populating the first (root) node
             // with the base differentiating question and setting the child
             // nodes with two questions reflecting potential answers
-            root = new Question("Can your pet fly?");
-            root.yesNode = new Question("Is your pet a bird?");
-            root.noNode = new Question("Is your pet a snake?");
+            //root = new Question("Can your pet fly?");
+            //root.yesNode = new Question("Is your pet a bird?");
+            //root.noNode = new Question("Is your pet a snake?");
+            return root;
+        }
+
+        // Attempt to read a tree from a file
+        string filename = @"C:\repos\twenty-questions\questions.txt";
+        char[] tree;
+        StringBuilder builder = new StringBuilder();
+
+        public Question LoadTree()
+        {
+            Question root = new Question();
+            using (StreamReader reader = File.OpenText(filename))
+            {
+                tree = new char[reader.BaseStream.Length];
+                reader.Read(tree, 0, (int)reader.BaseStream.Length);
+            }
+            foreach (char c in tree)
+            {
+                if (char.IsLetterOrDigit(c))
+                {
+                    builder.Append(c);
+                    root.question = builder.ToString();
+                }
+            }
             return root;
         }
 
@@ -56,13 +79,6 @@ namespace TwentyQuestions
             //temp = current;
             nodeFlag = "No";
             return question;
-        }
-
-        public Question LoadTree()
-        {
-            Question root = new Question();
-
-            return root;
         }
     }
 }
